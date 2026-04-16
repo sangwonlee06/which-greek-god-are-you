@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
+import { toPng } from "html-to-image";
 import type { God } from "@/lib/gods";
 
 interface ResultScreenProps {
@@ -10,6 +11,8 @@ interface ResultScreenProps {
 
 export default function ResultScreen({ god, onRestart }: ResultScreenProps) {
   const [copied, setCopied] = useState(false);
+  const [sharing, setSharing] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   const shareText = `${god.caption}\n\nFind your Greek god: ${typeof window !== "undefined" ? window.location.href : ""}`;
 
@@ -30,19 +33,53 @@ export default function ResultScreen({ god, onRestart }: ResultScreenProps) {
     }
   };
 
+  const captureCard = useCallback(async (): Promise<File | null> => {
+    if (!cardRef.current) return null;
+    try {
+      const dataUrl = await toPng(cardRef.current, {
+        pixelRatio: 3,
+        backgroundColor: "#09090d",
+      });
+      const res = await fetch(dataUrl);
+      const blob = await res.blob();
+      return new File([blob], "my-greek-god.png", { type: "image/png" });
+    } catch {
+      return null;
+    }
+  }, []);
+
   const handleShare = async () => {
-    if (navigator.share) {
-      try {
+    setSharing(true);
+    try {
+      // Try image share first (enables Instagram Stories, iMessage previews, etc.)
+      if (navigator.share && cardRef.current) {
+        const file = await captureCard();
+        if (file && navigator.canShare?.({ files: [file] })) {
+          await navigator.share({
+            files: [file],
+            title: `I'm ${god.name}! Which Greek God Are You?`,
+            text: `${god.caption}\n\nFind yours: ${window.location.href}`,
+          });
+          return;
+        }
+      }
+
+      // Fallback: text-only share
+      if (navigator.share) {
         await navigator.share({
           title: `I'm ${god.name}! Which Greek God Are You?`,
           text: god.caption,
           url: window.location.href,
         });
-      } catch {
-        // User cancelled
+        return;
       }
-    } else {
+
+      // Desktop fallback
       handleCopy();
+    } catch {
+      // User cancelled or error
+    } finally {
+      setSharing(false);
     }
   };
 
@@ -71,6 +108,7 @@ export default function ResultScreen({ god, onRestart }: ResultScreenProps) {
             THE CARD — screenshot-ready shareable centerpiece
             ════════════════════════════════════════════════ */}
         <div
+          ref={cardRef}
           className="animate-scale-fade-in w-full overflow-hidden rounded-[32px] p-px"
           style={{
             background: `linear-gradient(170deg, ${god.color}50, ${god.color}15 35%, transparent 50%, ${god.color}10 80%, ${god.color}40)`,
@@ -241,27 +279,34 @@ export default function ResultScreen({ god, onRestart }: ResultScreenProps) {
           {/* Primary share */}
           <button
             onClick={handleShare}
-            className="group relative w-full overflow-hidden rounded-2xl py-4.5 text-[15px] font-bold text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.97]"
+            disabled={sharing}
+            className="group relative w-full overflow-hidden rounded-2xl py-4.5 text-[15px] font-bold text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.97] disabled:opacity-70"
             style={{
               background: `linear-gradient(135deg, ${god.color}, ${god.color}cc)`,
               boxShadow: `0 12px 40px ${god.color}35`,
             }}
           >
             <span className="relative z-10 flex items-center justify-center gap-2.5">
-              <svg
-                className="h-[18px] w-[18px]"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2.2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"
-                />
-              </svg>
-              Share Result
+              {sharing ? (
+                "Preparing..."
+              ) : (
+                <>
+                  <svg
+                    className="h-[18px] w-[18px]"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2.2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"
+                    />
+                  </svg>
+                  Share Result
+                </>
+              )}
             </span>
           </button>
 
