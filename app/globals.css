@@ -6,11 +6,12 @@
     sans-serif;
 }
 
-/* Animations */
+/* ── Core Animations ── */
+
 @keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -18,10 +19,19 @@
   }
 }
 
+@keyframes fade-in-slow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes slide-up {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(24px);
   }
   to {
     opacity: 1;
@@ -32,13 +42,14 @@
 @keyframes bounce-in {
   0% {
     opacity: 0;
-    transform: scale(0.3);
+    transform: scale(0.2);
   }
   50% {
-    transform: scale(1.1);
+    opacity: 1;
+    transform: scale(1.15);
   }
   70% {
-    transform: scale(0.95);
+    transform: scale(0.92);
   }
   100% {
     opacity: 1;
@@ -46,36 +57,141 @@
   }
 }
 
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px 0 rgba(251, 191, 36, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px 8px rgba(251, 191, 36, 0.15);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes glow-ring {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.15;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes stagger-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Utility Classes ── */
+
 @utility animate-fade-in {
-  animation: fade-in 0.6s ease-out both;
+  animation: fade-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@utility animate-fade-in-slow {
+  animation: fade-in-slow 1.2s ease-out both;
 }
 
 @utility animate-slide-up {
-  animation: slide-up 0.5s ease-out both;
+  animation: slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @utility animate-bounce-in {
-  animation: bounce-in 0.6s ease-out both;
+  animation: bounce-in 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
-/* Smooth scrolling */
+@utility animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+@utility animate-pulse-glow {
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+@utility animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@utility animate-reveal-up {
+  animation: reveal-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@utility animate-glow-ring {
+  animation: glow-ring 3s ease-in-out infinite;
+}
+
+@utility animate-stagger-in {
+  animation: stagger-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Glass Effect ── */
+
+@utility glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+@utility glass-strong {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ── Base ── */
+
 html {
   scroll-behavior: smooth;
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Selection color */
 ::selection {
   background-color: rgba(251, 191, 36, 0.3);
   color: white;
 }
 
-/* Subtle background texture */
 body {
-  background-image: radial-gradient(
-    ellipse at 50% 0%,
-    rgba(120, 100, 200, 0.08) 0%,
-    transparent 60%
-  );
-  background-attachment: fixed;
+  background: #050507;
+  overflow-x: hidden;
 }
