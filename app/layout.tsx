@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://whichgreekgodareyou.vercel.app"),
   title: "Which Greek God Are You?",
   description:
     "Answer 10 questions to discover which Greek god matches your personality. Share your divine identity!",
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
     title: "Which Greek God Are You?",
     description:
       "Answer 10 questions to discover which Greek god matches your personality.",
+    images: ["/opengraph-image"],
   },
 };
 
