@@ -12,211 +12,211 @@ export interface Question {
 
 export const questions: Question[] = [
   {
-    question: "You walk into a party where you know no one. What do you do?",
+    question: "You show up to a party where you know nobody.",
     answers: [
       {
-        text: "Command the room — people naturally gravitate toward me",
+        text: "Own the room. People find me.",
         scores: { zeus: 3, ares: 1 },
       },
       {
-        text: "Find the most interesting person and have a deep conversation",
+        text: "Find the one interesting person and go deep",
         scores: { athena: 2, hades: 2 },
       },
       {
-        text: "Hit the dance floor and make it a night to remember",
+        text: "I am the party now",
         scores: { dionysus: 3, aphrodite: 1 },
       },
       {
-        text: "Work the room — I'll know everyone's name by midnight",
+        text: "Know everyone's name by midnight",
         scores: { hermes: 3, aphrodite: 1 },
       },
     ],
   },
   {
-    question: "Pick a superpower:",
+    question: "One superpower. Choose wisely.",
     answers: [
       {
-        text: "Read minds",
+        text: "Read every mind in the room",
         scores: { athena: 2, hades: 2 },
       },
       {
-        text: "Control the elements",
+        text: "Control the weather, the oceans, the whole sky",
         scores: { zeus: 2, poseidon: 2 },
       },
       {
-        text: "Teleportation",
+        text: "Teleport anywhere, no questions asked",
         scores: { hermes: 3, artemis: 1 },
       },
       {
-        text: "Make anyone fall in love with you",
+        text: "Make anyone fall for me on the spot",
         scores: { aphrodite: 3, dionysus: 1 },
       },
     ],
   },
   {
-    question: "Your friend is going through a tough time. How do you help?",
+    question: "Your best friend is going through it. You...",
     answers: [
       {
-        text: "Give them a concrete plan to fix it",
+        text: "Send them a plan. With steps.",
         scores: { athena: 3, zeus: 1 },
       },
       {
-        text: "Sit with them in silence — just being there is enough",
+        text: "Show up and just sit there with them",
         scores: { hades: 3, poseidon: 1 },
       },
       {
-        text: "Take them out for an unforgettable distraction",
+        text: "Drag them out for the best night of their life",
         scores: { dionysus: 2, hermes: 2 },
       },
       {
-        text: "Fight whoever caused the problem",
+        text: "Find whoever caused it and handle it",
         scores: { ares: 3, artemis: 1 },
       },
     ],
   },
   {
-    question: "Which setting feels most like home?",
+    question: "Where does your soul actually live?",
     answers: [
       {
-        text: "A mountaintop overlooking everything",
+        text: "Somewhere high with a view of everything",
         scores: { zeus: 2, apollo: 2 },
       },
       {
-        text: "Deep in a forest, off the grid",
+        text: "Deep in a forest, no signal",
         scores: { artemis: 3, hades: 1 },
       },
       {
-        text: "A buzzing city at night",
+        text: "A city that never turns off",
         scores: { hermes: 2, dionysus: 2 },
       },
       {
-        text: "By the ocean at sunset",
+        text: "Near water. Always near water.",
         scores: { poseidon: 2, aphrodite: 2 },
       },
     ],
   },
   {
-    question: "What's your biggest flaw?",
+    question: "Your worst trait. Be honest.",
     answers: [
       {
-        text: "I can be controlling",
+        text: "I need to run things",
         scores: { zeus: 3, ares: 1 },
       },
       {
-        text: "I overthink everything",
+        text: "I overthink until my brain hurts",
         scores: { athena: 2, hades: 2 },
       },
       {
-        text: "I'm too impulsive",
+        text: "Zero impulse control",
         scores: { ares: 2, dionysus: 2 },
       },
       {
-        text: "I avoid commitment",
+        text: "I ghost when it gets serious",
         scores: { hermes: 2, artemis: 2 },
       },
     ],
   },
   {
-    question: "Pick a way to spend a Sunday:",
+    question: "Sunday. No plans. What happens?",
     answers: [
       {
-        text: "Creating something — music, art, writing",
+        text: "Making something. Music, art, words.",
         scores: { apollo: 3, aphrodite: 1 },
       },
       {
-        text: "A long solo hike in nature",
+        text: "Solo hike. Phone off.",
         scores: { artemis: 2, poseidon: 2 },
       },
       {
-        text: "Brunch with friends that turns into an all-day thing",
+        text: "Brunch that somehow turns into dinner",
         scores: { dionysus: 3, hermes: 1 },
       },
       {
-        text: "Reading, journaling, going deep into my own thoughts",
+        text: "Just me, my thoughts, and total silence",
         scores: { hades: 2, athena: 2 },
       },
     ],
   },
   {
-    question: "What do people admire most about you?",
+    question: "People always say they love your...",
     answers: [
       {
-        text: "My confidence",
+        text: "Presence. I walk in and it shifts.",
         scores: { zeus: 2, ares: 2 },
       },
       {
-        text: "My creativity",
+        text: "Taste. In literally everything.",
         scores: { apollo: 3, aphrodite: 1 },
       },
       {
-        text: "My loyalty",
+        text: "Loyalty. Ride or die, always.",
         scores: { hades: 2, artemis: 2 },
       },
       {
-        text: "My energy",
+        text: "Energy. Everything's better when I'm there.",
         scores: { dionysus: 2, hermes: 2 },
       },
     ],
   },
   {
-    question: "You find a mysterious door. What do you do?",
+    question: "Locked door. Nobody knows what's behind it.",
     answers: [
       {
-        text: "Kick it open — no hesitation",
+        text: "Already kicked it open",
         scores: { ares: 3, zeus: 1 },
       },
       {
-        text: "Study it carefully before deciding",
+        text: "Studying every detail before I touch it",
         scores: { athena: 3, hades: 1 },
       },
       {
-        text: "Pick the lock — I love a puzzle",
+        text: "Picking the lock while humming",
         scores: { hermes: 3, apollo: 1 },
       },
       {
-        text: "Walk away — I choose my own adventures",
+        text: "Not my door, not my story",
         scores: { artemis: 2, poseidon: 2 },
       },
     ],
   },
   {
-    question: "What kind of love story is yours?",
+    question: "Your love story is...",
     answers: [
       {
-        text: "Epic and passionate — the kind they write myths about",
+        text: "Intense. The kind people can't stop watching.",
         scores: { aphrodite: 3, ares: 1 },
       },
       {
-        text: "Slow burn — deep, quiet, and unshakable",
+        text: "Slow burn. Deep roots. Unshakable.",
         scores: { hades: 3, poseidon: 1 },
       },
       {
-        text: "Adventurous — we'd explore the world together",
+        text: "An adventure with no fixed destination",
         scores: { artemis: 2, hermes: 2 },
       },
       {
-        text: "Creative — we'd inspire each other endlessly",
+        text: "Two people who make each other sharper",
         scores: { apollo: 2, aphrodite: 2 },
       },
     ],
   },
   {
-    question: "Choose a quote that resonates:",
+    question: "Pick the line that lives in your head:",
     answers: [
       {
-        text: '"The only way to deal with fear is to face it head-on"',
+        text: "Fear is just a dare I haven't taken yet",
         scores: { ares: 2, zeus: 2 },
       },
       {
-        text: '"In the middle of difficulty lies opportunity"',
+        text: "Every problem has a pattern if you look hard enough",
         scores: { athena: 2, hermes: 2 },
       },
       {
-        text: '"The earth has music for those who listen"',
+        text: "If you listen closely, everything is music",
         scores: { apollo: 2, poseidon: 2 },
       },
       {
-        text: '"Not all who wander are lost"',
+        text: "I'd rather be lost than stuck in one place",
         scores: { artemis: 2, dionysus: 2 },
       },
     ],
