@@ -85,7 +85,7 @@ export default function QuestionCard({
               <button
                 key={index}
                 onClick={() => handleSelect(index)}
-                className={`animate-stagger-in group flex w-full items-start gap-3.5 rounded-2xl p-4 text-left transition-all duration-400 ${
+                className={`animate-stagger-in group flex w-full items-center gap-3.5 rounded-2xl p-4 text-left transition-all duration-400 ${
                   isSelected
                     ? "glass-strong scale-[0.98] border-amber-400/30 bg-amber-400/10 ring-1 ring-amber-400/20"
                     : isDisabled
@@ -107,7 +107,7 @@ export default function QuestionCard({
 
                 {/* Answer text */}
                 <span
-                  className={`pt-0.5 text-[15px] leading-snug font-medium transition-colors duration-300 sm:text-base ${
+                  className={`text-[15px] leading-snug font-medium transition-colors duration-300 sm:text-base ${
                     isSelected
                       ? "text-amber-100"
                       : isDisabled
