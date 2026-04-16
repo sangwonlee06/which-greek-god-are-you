@@ -256,8 +256,8 @@ export default function ResultScreen({ god, onRestart }: ResultScreenProps) {
                   background: `linear-gradient(90deg, transparent, ${god.color}25)`,
                 }}
               />
-              <span className="text-[9px] font-medium uppercase tracking-[0.2em] text-white/15">
-                whichgreekgodareyou.com
+              <span className="whitespace-nowrap text-[9px] font-medium uppercase tracking-[0.2em] text-white/15">
+                which-greek-god-are-you.vercel.app
               </span>
               <div
                 className="h-px w-6"
