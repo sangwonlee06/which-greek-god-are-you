@@ -33,7 +33,7 @@ export default function StartScreen({ onStart }: StartScreenProps) {
             <span className="text-white/90">Are You?</span>
           </h1>
           <p className="mx-auto max-w-[260px] text-[15px] leading-relaxed text-white/40">
-            10 questions. One divine answer.
+            20 questions. One divine answer.
             <br />
             Discover your Olympian identity.
           </p>
